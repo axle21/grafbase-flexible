@@ -9,9 +9,8 @@ import Button from "./Button";
 // import Button from "./Button";
 import CustomMenu from "./CustomMenu";
 import { categoryFilters } from "@/constants";
-// import { updateProject, createNewProject, fetchToken } from "@/lib/actions";
+import { updateProject, createNewProject, fetchToken } from "@/lib/actions";
 import { FormState, ProjectInterface, SessionInterface } from "@/common.types";
-import { createNewProject, fetchToken } from "@/lib/actions";
 
 type Props = {
   type: string;
@@ -72,11 +71,11 @@ const ProjectForm = ({ type, session, project }: Props) => {
         router.push("/");
       }
 
-      // if (type === "edit") {
-      //   await updateProject(form, project?.id as string, token);
+      if (type === "edit") {
+        await updateProject(form, project?.id as string, token);
 
-      //   router.push("/");
-      // }
+        router.push("/");
+      }
     } catch (error) {
       alert(
         `Failed to ${
